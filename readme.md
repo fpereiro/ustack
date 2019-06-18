@@ -18,7 +18,7 @@ Making the libraries as simple as possible makes them easier to be understood. A
 
 A [complete understanding](https://prog21.dadgum.com/129.html) of web applications (taking the browser and node.js as our base) is possible.
 
-I find that when I understand my libraries, everything flows naturally. Not only I'm way more productive, I'm also enjoying the process much more. My sincere hope is that through the ustack, you will be more productive and enjoy the programming of web applications.
+I find that when I understand the libraries I use, everything flows naturally. Not only I'm way more productive, I'm also enjoying the process much more. My sincere hope is that through the ustack, you will be more productive and enjoy the programming of web applications.
 
 ## How
 
@@ -36,7 +36,7 @@ The ustack is composed of ten libraries. All of them are consistent in style and
 
 - Foundation: `dale` and `teishi` are the foundation for all the other libraries.
 - Frontend: `lith`, `recalc` and `cocholate` are the foundation for `gotoB`, which is the ustack's frontend framework.
-- Backend: `cicek` and `giz` allow to write a web server. `astack` and `kaboot` allows for testing and provisioning it.
+- Backend: `cicek` and `giz` allow to write a web server. `astack` and `kaboot` allow for testing and provisioning it.
 
 By using the ustack, you can create a complete web application. The one exception to ustack's completeness is that it does not provide libraries for interacting with a database, which is something that you need in any real application.
 
@@ -46,7 +46,7 @@ The defining stylistic approach of all the libraries is the use of [dsDSLs](http
 
 The ustack doesn't use post-2009 modern javascript. It takes pride in being uncool - and on being able to run in old browsers without any compilation step.
 
-In particular, the ustack uses a subset of ES5 [javascript](https://en.wikipedia.org/wiki/ECMAScript#5th_Edition), which we name `mES5`:
+In particular, the ustack uses a subset of [ES5 javascript](https://en.wikipedia.org/wiki/ECMAScript#5th_Edition), which we name `mES5`:
 
 - No use of object-oriented techniques: no `new`, no `this`, no accessing or modifying prototypes.
 - Use of some Douglas Crockford's recommendations: use of strict equality/inequality (`===` & `!==`), no `switch`.
