@@ -66,7 +66,7 @@ The fundamental construct required for these cases is a loop. The main problem w
 
 To solve this problem, `dale` offers a set of eight functions to create and execute functional loops. This means that through a function invocation, you can create loops that return object literals. And because loops are wrapped in a function invocation, you can put their results directly in an object literals. In other words, `dale` readily converts loops into data and helps us keep our code as expression-centered as possible.
 
-Besides this, `dale` does two other things: 1) allow to iterate not just arrays, but also objects, using the same functions; 2) fixing some quirks related to javascript loops.
+Besides this, `dale` does two other things: 1) allow to iterate not just arrays, but also objects, using the same functions; 2) fix some quirks related to javascript loops.
 
 ### [teishi](https://github.com/fpereiro/teishi): validation (390 lines)
 
@@ -96,7 +96,7 @@ Status: stable & complete.
 
 `recalc` is an attempt to find the general case of functional programming. It does it through a pretty heretical approach, which eschews object orientedness, pure functions and return values; it instead employs events, event listeners, and literals and function invocations to represent both. And a global object to store all the data.
 
-`recalc` events require both a `verb` and a `path`, just like REST verbs. This allows for reusing similar logic that affects different parts of the data. Event listeners are matched against events being fired, and are executed sequentially and synchronously (their order can be determined). Asynchronous event handlers can also be executed and the overall sequence of events still preserved, much as if they were written synchronously.
+`recalc` events require both a `verb` and a `path`, just like REST verbs. This allows for reusing similar logic that affects different parts of the data. Event listeners are matched against events being fired, and are executed sequentially and synchronously. Multiple event listeners can be executed in response to an event, and their sequence of execution can be specified. Asynchronous event handlers can also be executed and the overall sequence of events still preserved, much as if they were written synchronously.
 
 `recalc`'s global state, coupled with listeners, allow a single event to trigger cascades of actions in a predictable and replicable manner, even when these actions generate further event calls and asynchronous function invocations.
 
@@ -112,7 +112,7 @@ Status: mostly stable & mostly complete.
 
 Status: mostly stable & mostly complete.
 
-The ustack's frontend framework. After raging against frameworks for years, it was naturally I'd have to write my own and promote it to unsuspecting devs. You're encouraged to suspect and question. `gotoB` exists because web applications (as opposed to web pages) store state and redraw the page without refreshes. This means that despite my former hopes, plain HTML/CSS generation (even on the browser) is not enough to create web applications.
+The ustack's frontend framework. After raging against frameworks for years, it was natural I'd have to write my own and promote it to unsuspecting devs. You're encouraged to suspect and question. `gotoB` exists because web applications (as opposed to web pages) store state and redraw the page without refreshes. This means that despite my former hopes, plain HTML/CSS generation (even on the browser) is not enough to create web applications.
 
 `gotoB` is built on top of the five libraries we've already covered. It expects views to be functions that return `lith` structures that represent HTML/CSS. Views are event listeners that depend on a part of the global state; and views can trigger (or contain elements that trigger) events themselves. It is, then, essentially a set of functions on top of `lith` and `recalc`.
 
