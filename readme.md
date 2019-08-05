@@ -56,7 +56,7 @@ One of the main consequences of `mES5` is that the ustack is compatible with bro
 
 ## The libraries
 
-### [dale](https://github.com/fpereiro/dale): loops as functions (150 lines)
+### [dale](https://github.com/fpereiro/dale): loops as functions (170 lines)
 
 Status: stable & complete.
 
@@ -68,7 +68,7 @@ To solve this problem, `dale` offers a set of eight functions to create and exec
 
 Besides this, `dale` does two other things: 1) allow to iterate not just arrays, but also objects, using the same functions; 2) fix some quirks related to javascript loops.
 
-### [teishi](https://github.com/fpereiro/teishi): validation (390 lines)
+### [teishi](https://github.com/fpereiro/teishi): validation (400 lines)
 
 Status: stable & complete.
 
@@ -155,6 +155,32 @@ The complexity of devops toolsets is legendary, and in my minority view, absolut
 `kaboot` provides two main functions: `k.hit`, for performing HTTP requests, and `k.run`, for executing calls to the OS.
 
 It is built on top of `astack`, since all the operations are asynchronous.
+
+## Compatibility with old browsers and old engines of node.js
+
+Backwards compatibility is underrated. In the current software development zeitgest, dropping backward compatibility is not simply seen as necessary; it almost seems to be carried around like a badge of honor. While there are substantial reasons for breaking backward compatibility, the ustack prides itself in its lightweight and contrarian approach; hence, most of its libraries are compatible with old browsers and old versions of node.js.
+
+Regarding old browsers, there's a quite sharp line between [ES5 browsers](https://caniuse.com/#feat=es5) and those that came before.
+
+To provide support for browsers with no (or limited) ES5 support, here's a few pointers on how to do so. I learned these on the course of making the ustack compatible on old browsers:
+
+- Don't assume that `console.log` exists. You can use `dale.clog`, which will log to the console and fire an [alert](https://www.w3schools.com/jsref/met_win_alert.asp) otherwise. The ustack uses `dale.clog` throughout.
+- If you're going to use a reserved word as the property of an object, you need to put quotes around it. For example: `{'class': 'rhetoric'}`, and `dale ['do']`. This is why `dale.do` was renamed to `dale.go`, so that it'd be less cumbersome to write it.
+- There's no native JSON support! You can add it by using Douglas Crockford's [json library](https://github.com/douglascrockford/JSON-js/). If you want to use a CDN, this code snippet should work: `<script src="https://cdn.jsdelivr.net/gh/douglascrockford/JSON-js@aef828bfcd7d5efaa41270f831f8d27d5eef3845/json2.min.js"></script>` (courtesy of [jsdelivr](https://www.jsdelivr.com). Be sure to load JSON before you load the ustack.
+- Don't use `Date.now ()`, since it's not supported. You can use `new Date ().getTime ()` or `teishi.time ()` instead.
+- Don't use `Object.keys ()`, since it's not supported. You can use `dale.keys ()` instead.
+- Don't leave trailing commas on objects and arrays. A trailing comma can be seen in these two examples: `[[], [],]` and `{a: 'b', c: 'd',}`.
+- The unbelievably useful `indexOf` method for arrays is not supported! [teishi](https://github.com/fpereiro/teishi) provides its own [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming)) automatically.
+
+With the changes above, and unless your app requires access to modern APIs, you have the possibility of making your app work on most browsers released in the [current century](https://en.wikipedia.org/wiki/Timeline_of_web_browsers)! For the actual compatibility of the ustack, please refer to the section on compatibility for each of the individual libraries.
+
+Some other things I learned:
+- Safari 5 and below return `'function'` when doing `typeof /regex/`.
+- In IE8 and below, the `arguments` pseudo-array returns `[object Object]` when running `Object.prototype.toString.call` on it (like any other object would), so it must be detected through other means. And the same happens with `null`!
+
+I wish to thank [Browserstack](https://browserstack.com) for providing tools to test cross-browser compatibility.
+
+<a href="https://www.browserstack.com"><img src="https://bstacksupport.zendesk.com/attachments/token/kkjj6piHDCXiWrYlNXjKbFveo/?name=Logo-01.svg" width="150px" height="33px"></a>
 
 ## License
 
