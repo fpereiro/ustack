@@ -52,7 +52,7 @@ In particular, the ustack uses a subset of [ES5 javascript](https://en.wikipedia
 - Use of some Douglas Crockford's recommendations: use of strict equality/inequality (`===` & `!==`), no `switch`.
 - In the client, we use a few global variables defined at the top of the file to reference our libraries. Other than this, no global variables are used.
 
-One of the main consequences of `mES5` is that the ustack is compatible with browsers that support ES5 javascript (the first of which were released about a decade ago).
+One of the main consequences of `mES5` is that the ustack is compatible with old browsers with comparatively little effort.
 
 ## The libraries
 
