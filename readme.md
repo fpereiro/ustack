@@ -24,7 +24,7 @@ I find that when I understand the libraries I use, everything flows naturally. N
 
 The ustack has been forged through [radically minimizing the lines of code](http://steve-yegge.blogspot.com/2007/12/codes-worst-enemy.html) of each of its libraries. The entire ustack actually cannot be more than 4096 lines (2048 frontend & 2048 backend).
 
-The way we achieve code shortening is not by [golfing](https://en.wikipedia.org/wiki/Code_golf) or putting tons of statements into one line; rather, it is achieved through understanding the essence of the problems that each librarie solves, and then make the most straightforward solution possible to it.
+The way we achieve code shortening is not by [golfing](https://en.wikipedia.org/wiki/Code_golf) or putting tons of statements into one line; rather, it is achieved through understanding the essence of the problems that each library solves, and then writing the most straightforward solution possible to it.
 
 Not only we minimize the lines of code; we also minimize the number of dependencies of each of the libraries.
 
@@ -38,13 +38,13 @@ The ustack is composed of ten libraries. All of them are consistent in style and
 - Frontend: `lith`, `recalc` and `cocholate` are the foundation for `gotoB`, which is the ustack's frontend framework.
 - Backend: `cicek` and `giz` allow to write a web server. `astack` and `kaboot` allow for testing and provisioning it.
 
-By using the ustack, you can create a complete web application. The one exception to ustack's completeness is that it does not provide libraries for interacting with a database, which is something that you need in any real application.
+By using the ustack, you can create a complete web application. The one exception to ustack's completeness is that it does not provide libraries for interacting with a database, which is something that you also need in any real application.
 
 The defining stylistic approach of all the libraries is the use of [dsDSLs](https://www.toptal.com/software/declarative-programming).
 
 ## mES5, a javascript subset
 
-The ustack doesn't use post-2009 modern javascript. It takes pride in being uncool - and on being able to run in old browsers without any compilation step.
+The ustack doesn't use modern (post-2009) javascript. It takes pride in being uncool - and on being able to run in old browsers without any compilation step.
 
 In particular, the ustack uses a subset of [ES5 javascript](https://en.wikipedia.org/wiki/ECMAScript#5th_Edition), which we name `mES5`:
 
@@ -82,7 +82,7 @@ Many people, however, prefer to add type declarations and checks on top of javas
 
 `teishi` makes heavy use of object literals - indeed, validation rules are expressed as data.
 
-### [lith](https://github.com/fpereiro/lith): HTML/CSS generation (270 lines)
+### [lith](https://github.com/fpereiro/lith): HTML/CSS generation (260 lines)
 
 Status: stable & complete.
 
@@ -90,7 +90,7 @@ Status: stable & complete.
 
 `lith` allows for creating dynamic applications on the client - rather than serving HTML and CSS statically, `lith` generates it dynamically on the client. While this requires javascript, it still enables performant interfaces for browsers released in the last decade.
 
-### [recalc](https://github.com/fpereiro/recalc): events (200 lines)
+### [recalc](https://github.com/fpereiro/recalc): events (190 lines)
 
 Status: stable & complete.
 
@@ -102,9 +102,9 @@ Status: stable & complete.
 
 While `recalc` can be used in the backend, it finds its core use case in the creation of interfaces for the browser (see `gotoB` below), where every user interaction (or side effect) can potentially trigger multiple actions in the interface and the server.
 
-### [cocholate](https://github.com/fpereiro/cocholate): DOM manipulation & AJAX (280 lines)
+### [cocholate](https://github.com/fpereiro/cocholate): DOM manipulation & AJAX (290 lines)
 
-Status: mostly stable & mostly complete.
+Status: stable & complete.
 
 `cocholate` is a set of tools for dealing with the DOM in a somewhat more consistent way. It provides its own minmalistic polyfill.
 
@@ -120,7 +120,7 @@ The ustack's frontend framework. After raging against frameworks for years, it w
 
 ### [cicek](https://github.com/fpereiro/cicek): a web server (830 lines)
 
-Status: unstable & mostly complete. Will be rewritten at some point during 2019.
+Status: unstable & mostly complete. Will be rewritten at some point during 2020.
 
 A fully featured web server, including the kitchen sink: cookies, logging, JSON & multipart body parsing, serving of static assets, cluster. The idea is to find the minimal set of core components that make a web server, and then present them in the most succint, consistent and solid way possible.
 
@@ -134,7 +134,7 @@ A few auth functions that use the excellent [bcryptjs](https://github.com/dcodeI
 
 ### [astack](https://github.com/fpereiro/astack): asynchronicity (390 lines)
 
-Status: unstable. A [new version](https://github.com/altocodenl/acpic/blob/master/lib/astack.js) is currently being tested and will be published in 2019.
+Status: unstable. A [new version](https://github.com/altocodenl/acpic/blob/master/lib/astack.js) is currently being tested and will be published in 2020.
 
 `astack` takes object literals to their ultimate frontier: representing code itself. `astack` allows for sequences of functions to be defined and executed as arrays of functions and arguments. It allows for sequential, conditional, iterative and interrupted execution. Both synchronous and asynchronous functions can be converted to `astack`'s conventions and then used on these functions.
 
@@ -143,6 +143,8 @@ Status: unstable. A [new version](https://github.com/altocodenl/acpic/blob/maste
 While `astack` can be used in the frontend, it finds its core use case in the backend, both within server routes and when testing or provisioning an API (see `kaboot` below).
 
 `astack` is chiefly a solution to the async problem - and yet, quite unexpectedly, allows to view of the general patterns of computation in a new light, by making us write code in terms of literals (or functions that return literals).
+
+Unlike other libraries from the ustack, `astack` has no dependencies.
 
 ### [kaboot](https://github.com/fpereiro/kaboot): test & deploy applications (??? lines)
 
@@ -154,22 +156,23 @@ The complexity of devops toolsets is legendary, and in my minority view, absolut
 
 `kaboot` provides two main functions: `k.hit`, for performing HTTP requests, and `k.run`, for executing calls to the OS.
 
-It is built on top of `astack`, since all the operations are asynchronous.
+It is built on top of `astack`, since all its core operations are asynchronous.
 
 ## Compatibility with old browsers and old engines of node.js
 
-Backwards compatibility is underrated. In the current software development zeitgest, dropping backward compatibility is not simply seen as necessary; it almost seems to be carried around like a badge of honor. While there are substantial reasons for breaking backward compatibility, the ustack prides itself in its lightweight and contrarian approach; hence, most of its libraries are compatible with old browsers and old versions of node.js.
+Backwards compatibility is underrated. In the current web development zeitgeist, dropping backward compatibility is not simply seen as necessary; it almost seems to be carried around like a badge of honor. While there are substantial reasons for breaking backward compatibility, the ustack prides itself in its lightweight and contrarian approach; hence, most of its libraries are compatible with old browsers and old versions of node.js.
 
 Regarding old browsers, there's a quite sharp line between [ES5 browsers](https://caniuse.com/#feat=es5) and those that came before.
 
 To provide support for browsers with no (or limited) ES5 support, here's a few pointers on how to do so. I learned these on the course of making the ustack compatible on old browsers:
 
 - Don't assume that `console.log` exists. You can use `dale.clog`, which will log to the console and fire an [alert](https://www.w3schools.com/jsref/met_win_alert.asp) otherwise. The ustack uses `dale.clog` throughout.
-- If you're going to use a reserved word as the property of an object, you need to put quotes around it. For example: `{'class': 'rhetoric'}`, and `dale ['do']`. This is why `dale.do` was renamed to `dale.go`, so that it'd be less cumbersome to write it.
+- If you're going to use a reserved word as the property of an object, you need to put quotes around it. For example: `{'class': 'rhetoric'}`, and `dale ['do']`. This is why `dale.do` was renamed to `dale.go`, so that it'd be less cumbersome to invoke it.
 - There's no native JSON support! You can add it by using Douglas Crockford's [json library](https://github.com/douglascrockford/JSON-js/). If you want to use a CDN, this code snippet should work: `<script src="https://cdn.jsdelivr.net/gh/douglascrockford/JSON-js@aef828bfcd7d5efaa41270f831f8d27d5eef3845/json2.min.js"></script>` (courtesy of [jsdelivr](https://www.jsdelivr.com). Be sure to load JSON before you load the ustack.
 - Don't use `Date.now ()`, since it's not supported. You can use `new Date ().getTime ()` or `teishi.time ()` instead.
 - Don't use `Object.keys ()`, since it's not supported. You can use `dale.keys ()` instead.
 - Don't leave trailing commas on objects and arrays. A trailing comma can be seen in these two examples: `[[], [],]` and `{a: 'b', c: 'd',}`.
+- To access the nth element of a string `s`, don't use `s [n]` - rather, you can split the string into an array, and then get its nth element: `s.split ('') [n]`.
 - The unbelievably useful `indexOf` method for arrays is not supported! [teishi](https://github.com/fpereiro/teishi) provides its own [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming)) automatically.
 
 With the changes above, and unless your app requires access to modern APIs, you have the possibility of making your app work on most browsers released in the [current century](https://en.wikipedia.org/wiki/Timeline_of_web_browsers)! For the actual compatibility of the ustack, please refer to the section on compatibility for each of the individual libraries.
