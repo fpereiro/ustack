@@ -28,7 +28,7 @@ The way we achieve code shortening is not by [golfing](https://en.wikipedia.org/
 
 Not only we minimize the lines of code; we also minimize the number of dependencies of each of the libraries.
 
-A fundamental assumption is that properly written software can be [(almost) finished](http://www.federicopereiro.com/asymptotic-software/) and that once in that state, it can remain useful for years and even decades.
+A fundamental assumption underlying the ustack is that properly written software can be [(almost) finished](http://www.federicopereiro.com/asymptotic-software/) and that once in that state, it can remain useful for years and even decades.
 
 ## What
 
@@ -56,7 +56,7 @@ One of the main consequences of `mES5` is that the ustack is compatible with old
 
 ## The libraries
 
-### [dale](https://github.com/fpereiro/dale): loops as functions (170 lines)
+### [dale](https://github.com/fpereiro/dale): loops as functions (160 lines)
 
 Status: stable & complete.
 
@@ -82,7 +82,7 @@ Many people, however, prefer to add type declarations and checks on top of javas
 
 `teishi` makes heavy use of object literals - indeed, validation rules are expressed as data.
 
-### [lith](https://github.com/fpereiro/lith): HTML/CSS generation (260 lines)
+### [lith](https://github.com/fpereiro/lith): HTML/CSS generation (270 lines)
 
 Status: stable & complete.
 
@@ -90,7 +90,7 @@ Status: stable & complete.
 
 `lith` allows for creating dynamic applications on the client - rather than serving HTML and CSS statically, `lith` generates it dynamically on the client. While this requires javascript, it still enables performant interfaces for browsers released in the last decade.
 
-### [recalc](https://github.com/fpereiro/recalc): events (190 lines)
+### [recalc](https://github.com/fpereiro/recalc): events (200 lines)
 
 Status: stable & complete.
 
@@ -102,13 +102,13 @@ Status: stable & complete.
 
 While `recalc` can be used in the backend, it finds its core use case in the creation of interfaces for the browser (see `gotoB` below), where every user interaction (or side effect) can potentially trigger multiple actions in the interface and the server.
 
-### [cocholate](https://github.com/fpereiro/cocholate): DOM manipulation & AJAX (290 lines)
+### [cocholate](https://github.com/fpereiro/cocholate): DOM manipulation & AJAX (340 lines)
 
 Status: stable & complete.
 
-`cocholate` is a set of tools for dealing with the DOM in a somewhat more consistent way. It provides its own minmalistic polyfill.
+`cocholate` is a set of tools for dealing with the DOM in a somewhat more consistent way. It provides its own minimalistic polyfill.
 
-### [gotoB](https://github.com/fpereiro/gotob): a frontend framework (700 lines)
+### [gotoB](https://github.com/fpereiro/gotob): a frontend framework (670 lines)
 
 Status: mostly stable & mostly complete.
 
@@ -180,6 +180,7 @@ With the changes above, and unless your app requires access to modern APIs, you 
 Some other things I learned:
 - Safari 5 and below return `'function'` when doing `typeof /regex/`.
 - In IE8 and below, the `arguments` pseudo-array returns `[object Object]` when running `Object.prototype.toString.call` on it (like any other object would), so it must be detected through other means. And the same happens with `null`!
+- In IE8 and below, if you have a local variable `error` and then you have a `try/catch block` where the argument passed to `catch` is also `error`, the local variable will be overwritten!
 
 I wish to thank [Browserstack](https://browserstack.com) for providing tools to test cross-browser compatibility.
 
