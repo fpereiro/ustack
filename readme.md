@@ -110,7 +110,7 @@ Status: stable & complete.
 
 ### [gotoB](https://github.com/fpereiro/gotob): a frontend framework (670 lines)
 
-Status: mostly stable & mostly complete.
+Status: mostly stable & complete.
 
 The ustack's frontend framework. After raging against frameworks for years, it was natural I'd have to write my own and promote it to unsuspecting devs. You're encouraged to suspect and question. `gotoB` exists because web applications (as opposed to web pages) store state and redraw the page without refreshes. This means that despite my former hopes, plain HTML/CSS generation (even on the browser) is not enough to create web applications.
 
@@ -120,7 +120,7 @@ The ustack's frontend framework. After raging against frameworks for years, it w
 
 ### [cicek](https://github.com/fpereiro/cicek): a web server (830 lines)
 
-Status: unstable & mostly complete. Will be rewritten at some point during 2020.
+Status: unstable & mostly complete. Will be rewritten at some point in the future.
 
 A fully featured web server, including the kitchen sink: cookies, logging, JSON & multipart body parsing, serving of static assets, cluster. The idea is to find the minimal set of core components that make a web server, and then present them in the most succint, consistent and solid way possible.
 
@@ -134,7 +134,7 @@ A few auth functions that use the excellent [bcryptjs](https://github.com/dcodeI
 
 ### [astack](https://github.com/fpereiro/astack): asynchronicity (390 lines)
 
-Status: unstable. A [new version](https://github.com/altocodenl/acpic/blob/master/lib/astack.js) is currently being tested and will be published in 2020.
+Status: unstable. A [new version](https://github.com/altocodenl/acpic/blob/master/lib/astack.js) is currently being tested and will be published in the future.
 
 `astack` takes object literals to their ultimate frontier: representing code itself. `astack` allows for sequences of functions to be defined and executed as arrays of functions and arguments. It allows for sequential, conditional, iterative and interrupted execution. Both synchronous and asynchronous functions can be converted to `astack`'s conventions and then used on these functions.
 
