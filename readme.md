@@ -68,7 +68,7 @@ To solve this problem, `dale` offers a set of eight functions to create and exec
 
 Besides this, `dale` does two other things: 1) allow to iterate not just arrays, but also objects, using the same functions; 2) fix some quirks related to javascript loops.
 
-### [teishi](https://github.com/fpereiro/teishi): validation (400 lines)
+### [teishi](https://github.com/fpereiro/teishi): validation (410 lines)
 
 Status: stable & complete.
 
@@ -110,7 +110,7 @@ Status: stable & complete.
 
 ### [gotoB](https://github.com/fpereiro/gotob): a frontend framework (670 lines)
 
-Status: mostly stable & complete.
+Status: stable & complete.
 
 The ustack's frontend framework. After raging against frameworks for years, it was natural I'd have to write my own and promote it to unsuspecting devs. You're encouraged to suspect and question. `gotoB` exists because web applications (as opposed to web pages) store state and redraw the page without refreshes. This means that despite my former hopes, plain HTML/CSS generation (even on the browser) is not enough to create web applications.
 
